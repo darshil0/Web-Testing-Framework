@@ -1,6 +1,7 @@
 # Web Testing Framework
 
-This is a lightweight web testing framework built using Java, Selenium, and TestNG.
+This is a new repository created for Web Testing Framework creation and understanding. This is a lightweight web testing framework built using Java, Selenium, and TestNG.
+
 
 ## Architecture
 
