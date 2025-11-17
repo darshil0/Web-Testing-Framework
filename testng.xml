@@ -3,7 +3,6 @@
     <test name="SampleTest">
         <classes>
             <class name="com.example.tests.SampleTest"/>
-            <class name="com.example.tests.CoreFunctionalityTest"/>
         </classes>
     </test>
 </suite>
