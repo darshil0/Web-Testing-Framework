@@ -7,17 +7,17 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+  protected WebDriver driver;
 
-    @BeforeMethod
-    public void setUp() {
-        driver = WebDriverFactory.createWebDriver("chrome");
-    }
+  @BeforeMethod
+  public void setUp() {
+    driver = WebDriverFactory.createWebDriver("chrome");
+  }
 
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+  @AfterMethod
+  public void tearDown() {
+    if (driver != null) {
+      driver.quit();
     }
+  }
 }
