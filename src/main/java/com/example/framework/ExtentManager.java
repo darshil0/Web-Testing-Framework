@@ -2,27 +2,18 @@ package com.example.framework;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManager {
-
     private static ExtentReports extent;
 
-    public static ExtentReports getInstance() {
+    public static synchronized ExtentReports getInstance() {
         if (extent == null) {
-            createInstance();
+            ExtentSparkReporter sparkReporter = new ExtentSparkReporter(ConfigReader.getProperty("report.path") + "extent-report.html");
+            sparkReporter.config().setDocumentTitle(ConfigReader.getProperty("report.title"));
+            sparkReporter.config().setReportName(ConfigReader.getProperty("report.name"));
+            extent = new ExtentReports();
+            extent.attachReporter(sparkReporter);
         }
         return extent;
-    }
-
-    private static void createInstance() {
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("target/extent-reports/extent-report.html");
-        sparkReporter.config().setTheme(Theme.STANDARD);
-        sparkReporter.config().setDocumentTitle("Automation Report");
-        sparkReporter.config().setEncoding("utf-8");
-        sparkReporter.config().setReportName("Automation Test Results");
-
-        extent = new ExtentReports();
-        extent.attachReporter(sparkReporter);
     }
 }

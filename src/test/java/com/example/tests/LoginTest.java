@@ -9,7 +9,7 @@ public class LoginTest extends BaseTest {
 
   @Test
   public void testSuccessfulLogin() {
-    LoginPage loginPage = new LoginPage(driver);
+    LoginPage loginPage = new LoginPage(getDriver());
     loginPage.enterUsername(ConfigReader.getProperty("username"));
     loginPage.enterPassword(ConfigReader.getProperty("password"));
     loginPage.clickLoginButton();
@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
 
   @Test
   public void testFailedLogin() {
-    LoginPage loginPage = new LoginPage(driver);
+    LoginPage loginPage = new LoginPage(getDriver());
     loginPage.enterUsername("wronguser");
     loginPage.enterPassword("wrongpassword");
     loginPage.clickLoginButton();
