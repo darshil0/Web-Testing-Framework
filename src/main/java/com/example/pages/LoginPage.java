@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
     @FindBy(id = "password")
     private WebElement passwordInput;
 
-    @FindBy(css = ".fa-sign-in")
+    @FindBy(css = "button[type='submit']")
     private WebElement loginButton;
 
     @FindBy(id = "flash")

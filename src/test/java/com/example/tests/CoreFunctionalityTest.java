@@ -11,15 +11,15 @@ public class CoreFunctionalityTest extends BaseTest {
     @Test(priority = 1, description = "Verify search button presence on Google homepage",
           retryAnalyzer = RetryAnalyzer.class)
     public void testSearchButtonPresence() {
-        logger.info("Starting testSearchButtonPresence");
+        getLogger().info("Starting testSearchButtonPresence");
         navigateTo("https://www.google.com");
         
-        GoogleHomePage homePage = new GoogleHomePage(driver);
+        GoogleHomePage homePage = new GoogleHomePage(getDriver());
         boolean isDisplayed = homePage.isSearchButtonDisplayed();
         
-        logger.info("Search button displayed: " + isDisplayed);
+        getLogger().info("Search button displayed: " + isDisplayed);
         Assert.assertTrue(isDisplayed, "Search button is not displayed");
-        logger.info("testSearchButtonPresence passed");
+        getLogger().info("testSearchButtonPresence passed");
     }
 
     @DataProvider(name = "searchQueries")
@@ -35,17 +35,17 @@ public class CoreFunctionalityTest extends BaseTest {
           description = "Data-driven search test",
           retryAnalyzer = RetryAnalyzer.class)
     public void testDataDrivenSearch(String query) {
-        logger.info("Starting testDataDrivenSearch with query: " + query);
+        getLogger().info("Starting testDataDrivenSearch with query: " + query);
         navigateTo("https://www.google.com");
         
-        GoogleHomePage homePage = new GoogleHomePage(driver);
+        GoogleHomePage homePage = new GoogleHomePage(getDriver());
         homePage.searchFor(query);
         
-        String pageTitle = driver.getTitle();
-        logger.info("Page title after search: " + pageTitle);
+        String pageTitle = getDriver().getTitle();
+        getLogger().info("Page title after search: " + pageTitle);
         
         Assert.assertTrue(pageTitle.contains(query), 
                          "Search result title does not contain query: " + query);
-        logger.info("testDataDrivenSearch passed for query: " + query);
+        getLogger().info("testDataDrivenSearch passed for query: " + query);
     }
 }
